@@ -1,0 +1,27 @@
+{
+  "name": "algorithms",
+  "version": "1.0.0",
+  "description": "practice",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "tsc": "./node_modules/.bin/tsc "
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/genffy/Algorithms.git"
+  },
+  "keywords": [
+    "leetcode"
+  ],
+  "author": "genffy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/genffy/Algorithms/issues"
+  },
+  "homepage": "https://github.com/genffy/Algorithms#readme",
+  "devDependencies": {
+    "ts-node": "^10.2.0",
+    "typescript": "^4.3.5"
+  }
+}
