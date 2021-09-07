@@ -5,7 +5,8 @@
   "main": "index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "tsc": "./node_modules/.bin/tsc "
+    "tsc": "./node_modules/.bin/tsc ",
+    "dev": "php -S localhost:8088 ./server.php"
   },
   "repository": {
     "type": "git",
