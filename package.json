@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "tsc": "./node_modules/.bin/tsc ",
-    "dev": "php -S localhost:8088 ./server.php"
+    "mock": "php -S localhost:8088 ./server.php",
+    "dev": "vite"
   },
   "repository": {
     "type": "git",
@@ -23,6 +24,7 @@
   "homepage": "https://github.com/genffy/Algorithms#readme",
   "devDependencies": {
     "ts-node": "^10.2.0",
-    "typescript": "^4.3.5"
+    "typescript": "^4.3.5",
+    "vite": "^2.5.2"
   }
 }
