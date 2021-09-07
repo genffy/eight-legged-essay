@@ -10,7 +10,7 @@
  * @param {ListNode} l2
  * @return {ListNode}
  */
- var addTwoNumbers = function (l1, l2) {
+var addTwoNumbers = function (l1, l2) {
   let arr1 = iterListNode(l1);
   let arr2 = iterListNode(l2);
   if (arr1.length < arr2.length) {
@@ -28,16 +28,17 @@
     }
     if (arr[idx] !== undefined) {
       res += arr[idx];
-      arr[idx] = res % 10
+      // replace extra push
+      arr[idx] = res % 10;
     } else {
-      arr = arr.concat([res % 10])
+      arr.push(res % 10)
     }
     if (res >= 10) {
+      // extra push
       arr.push(1);
     }
   })
-  const res = buildListNode(arr);
-  return res;
+  return buildListNode(arr);
 }
 
 function ListNode (val, next) {
@@ -61,7 +62,7 @@ function iterListNode (ll) {
   let hasNext = true;
   while (hasNext) {
     arr.push(course.val);
-    hasNext = course.next != null;
+    hasNext = course.next !== null;
     course = course.next;
   }
   return arr;
