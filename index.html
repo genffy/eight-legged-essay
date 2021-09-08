@@ -23,6 +23,53 @@
   </head>
   <body>
     <div id="app"></div>
-    <script type="module" src="/main.js"></script>
+    <!-- <script type="module" src="/main.js"></script> -->
+    <!-- <script>
+      // 变量提升的问题，但仍旧没彻底弄明白
+      // var a = 0
+      // console.log('0', typeof a, typeof window.a, a, window.a)
+      // if (true) { // 不创建新的上下文环境
+      //   console.log('1', typeof a, typeof window.a, a, window.a)
+      //   a = 1
+      //   console.log('2', typeof a, typeof window.a, a, window.a)
+      //   // 这里是咋回事？
+      //   function a() { }
+      //   console.log('2-1', typeof a, typeof window.a, a, window.a)
+      //   a = 21
+      //   console.log('3', typeof a, typeof window.a, a, window.a)
+      // }
+      // console.log('4', typeof a, typeof window.a, a, window.a)
+      // 共享式求值策略
+      // function test(obj) {
+      //   obj.value = 333;
+      // }
+      // function test2(obj) {
+      //   obj = {
+      //     value: 444,
+      //   };
+      // }
+      // var obj = {
+      //   value: 12,
+      // }
+      // test(obj);
+      // console.log(obj);
+      // var obj2 = {
+      //   value: 12,
+      // }
+      // test2(obj2);
+      // console.log(obj2);
+    </script> -->
+    <script>
+      function printH2() {
+          console.log('first script', document.querySelectorAll('h2'));
+      }
+      printH2()
+      setTimeout(printH2)
+    </script>
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/4.0.0-alpha.4/css/bootstrap.css">
+    <h2>World</h2>
+    <script>
+      console.log('second script');
+    </script>
   </body>
 </html>
