@@ -3,6 +3,7 @@
  * @param {number} n
  * @return {number}
  */
+// TODO leetcode 上的解释都没看懂
  var leastInterval = function(tasks, n) {
   // 每次都找剩下的最长组合
   if(n=0){
