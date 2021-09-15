@@ -1,4 +1,4 @@
-import Binary, { Node } from '@/utils/binary-tree';
+import Binary, { TreeNode } from '@/utils/binary-tree';
 
 var isBalanced = function (root) {
   if (!root) return true;
@@ -17,7 +17,7 @@ var sortedArrayToBST = function (nums) {
     return null
   }
   let m = Math.floor((nums.length - 1) / 2)
-  let p = new Node(nums[m])
+  let p = new TreeNode(nums[m])
   p.left = sortedArrayToBST(nums.slice(0, m))
   p.right = sortedArrayToBST(nums.slice(m + 1))
   return p

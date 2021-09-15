@@ -2,21 +2,48 @@
 // 中序遍历：遍历左子树–>访问根–>遍历右子树;
 // 后序遍历：遍历左子树–>遍历右子树–>访问根;
 // 广度遍历：按照层次一层层遍历;
-export const Node = function (val) {
-    this.val = val;
-    this.left = null;
-    this.right = null;
+export function TreeNode (val, left, right) {
+    this.val = (val === undefined ? 0 : val)
+    this.left = (left === undefined ? null : left)
+    this.right = (right === undefined ? null : right)
 }
-
-var callback = item => console.log(item);
-export default class BinaryTree {
-    constructor() {
-        this.root = null;
+export default class Binary {
+    root = null
+    constructor() { }
+    initFromArray (array) {
+        if (array.length == 0) {
+            return this.root;
+        }
+        const len = array.length;
+        this.root = new TreeNode(array[0]);
+        const nodeList = [this.root];
+        let index = 0;
+        while (index < len) {
+            index++;
+            if (index >= len) {
+                return this;
+            }
+            const currNode = nodeList.shift();
+            const leftChild = new TreeNode(array[index]);
+            if (leftChild.val != null) {
+                currNode.left = leftChild;
+                nodeList.push(leftChild);
+            }
+            index++;
+            if (index >= len) {
+                return this;
+            }
+            const rightChild = new TreeNode(array[index]);
+            if (rightChild.val != null) {
+                currNode.right = rightChild;
+                nodeList.push(rightChild);
+            }
+        }
+        return this;
     }
-
     // 插入节点（按二叉搜索树要求）
     insert (val) {
-        let newNode = new Node(val);
+        let newNode = new TreeNode(val);
         if (this.root == null) {
             this.root = newNode;
         } else {
@@ -41,33 +68,59 @@ export default class BinaryTree {
             }
         }
     }
-
-
-    //前序遍历
-    DLR (callback) {
-        this.traverseNodesDLR(this.root, callback);
-    }
-    traverseNodesDLR (node, callback) {
-        if (node != null) {
-            callback(node.val);
-            this.traverseNodesDLR(node.left, callback);
-            this.traverseNodesDLR(node.right, callback)
+    // 深度遍历
+    //  前序遍历
+    //  中序遍历
+    //  后序遍历
+    // 广度遍历
+    preTraverse () {
+        function getNodeVal (node, arr) {
+            if (node != null) {
+                arr.push(node.val);
+                getNodeVal(node.left, arr);
+                getNodeVal(node.right, arr);
+            }
+            return arr;
         }
+        return getNodeVal(this.root, []);
     }
-
-    // 中序遍历
-    LDR (callback) {
-        this.traverseNodesLDR(this.root, callback);
-    }
-
-    traverseNodesLDR = function (node, callback) {
-        if (node) {
-            this.traverseNodesLDR(node.left, callback);
-            callback(node.val);
-            this.traverseNodesLDR(node.right, callback);
+    middleTraverse () {
+        function getNodeVal (node, arr) {
+            if (node != null) {
+                getNodeVal(node.left, arr);
+                arr.push(node.val);
+                getNodeVal(node.right, arr);
+            }
+            return arr;
         }
+        return getNodeVal(this.root, []);
     }
-
+    afterTraverse () {
+        function getNodeVal (node, arr) {
+            if (node != null) {
+                getNodeVal(node.right, arr);
+                getNodeVal(node.left, arr);
+                arr.push(node.val);
+            }
+            return arr;
+        }
+        return getNodeVal(this.root, []);
+    }
+    breadthTraversal () {
+        function traverse (node, arr) {
+            if (node != null) { //判断二叉树是否为空
+                var que = [node]; //将二叉树放入队列
+                while (que.length !== 0) { //判断队列是否为空
+                    node = que.shift(); //从队列中取出一个结点
+                    arr.push(node.val); //将取出结点的值保存到数组
+                    if (node.left) que.push(node.left); //如果存在左子树，将左子树放入队列
+                    if (node.right) que.push(node.right); //如果存在右子树，将右子树放入队列
+                }
+                return arr;
+            }
+        }
+        return traverse(this.root, []);
+    }
     // 查找最小值
     min () {
         let current = this.root;
@@ -77,16 +130,14 @@ export default class BinaryTree {
         return current.val;
     }
     // 查找最大值
-    max = function () {
+    max () {
         let current = this.root;
         while (current.right != null) {
             current = current.right;
         }
         return current.val;
     }
-
-    //删除节点
-    removeNode = function (node, val) {
+    removeNode(node, val) {
         if (node === null) {
             return null
         }
@@ -114,9 +165,8 @@ export default class BinaryTree {
                 return node;
             }
             //4、删除左右子树都有的节点
-
             //4.1查找右子树中最小的节点N，
-            var minNode = getMinNode(node.right);
+            var minNode = this.min(node.right);
             //4.2用N替换需要删除的节点，
             node.val = minNode.val;
             //4.3删除右子树最小的节点
@@ -125,90 +175,7 @@ export default class BinaryTree {
         }
     }
 
-    deleteNode = function (val) {
+    deleteNode (val) {
         this.removeNode(this.root, val);
-    }
-
-}
-
-function TreeNode (val, left, right) {
-    this.val = (val === undefined ? 0 : val)
-    this.left = (left === undefined ? null : left)
-    this.right = (right === undefined ? null : right)
-}
-export class LeetCodeTree {
-    root = null
-    constructor(array) {
-        if(array.length == 0){
-            return this.root;
-        }
-        const len = array.length;
-        this.root = new TreeNode(array[0]);
-        const nodeList = [this.root];
-        let index = 0;
-        while (index < len) {
-            index++;
-            if (index >= len) {
-                return this;
-            }
-            const currNode = nodeList.shift();
-            const leftChild = new TreeNode(array[index]);
-            if (leftChild.val != null) {
-                currNode.left = leftChild;
-                nodeList.push(leftChild);
-            }
-            index++;
-            if (index >= len) {
-                return this;
-            }
-            const rightChild = new TreeNode(array[index]);
-            if (rightChild.val != null) {
-                currNode.right = rightChild;
-                nodeList.push(rightChild);
-            }
-
-        }
-        return this;
-    }
-    // 深度遍历
-    //  前序遍历
-    //  中序遍历
-    //  后序遍历
-    // 广度遍历
-    preTraverse() {
-        const output = [];
-        function getNodeVal(node, arr) {
-            if(node != null){
-                arr.push(node.val);
-                getNodeVal(node.left, arr);
-                getNodeVal(node.right, arr);
-            }
-        }
-        getNodeVal(this.root, output);
-        return output;
-    }
-    middleTraverse() {
-        const output = [];
-        function getNodeVal(node, arr) {
-            if(node != null){
-                getNodeVal(node.left, arr);
-                arr.push(node.val);
-                getNodeVal(node.right, arr);
-            }
-        }
-        getNodeVal(this.root, output);
-        return output;
-    }
-    afterTraverse() {
-        const output = [];
-        function getNodeVal(node, arr) {
-            if(node != null){
-                getNodeVal(node.right, arr);
-                getNodeVal(node.left, arr);
-                arr.push(node.val);
-            }
-        }
-        getNodeVal(this.root, output);
-        return output;
     }
 }

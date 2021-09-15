@@ -13,7 +13,7 @@
 //   this.left = (left===undefined ? null : left)
 //   this.right = (right===undefined ? null : right)
 // }
-import { LeetCodeTree } from '@/utils/binary-tree';
+import Binary from '@/utils/binary-tree';
 var binaryTreePathsO = function(root) {
   const paths = [];
   const construct_paths = (root, path) => {
@@ -67,7 +67,7 @@ const arr = [1, 2, 3, null, 5];
 //  2   3
 //   \
 //    5
-const b = new LeetCodeTree(arr);
+const b = (new Binary).initFromArray(arr);
 console.log('b', binaryTreePathsO(b.root), binaryTreePathsT(b.root));
 
 var arr2 = [3,9,20,null,null,15,7];
@@ -76,10 +76,14 @@ var arr2 = [3,9,20,null,null,15,7];
 // 9  20
 //  /  \
 // 15   7
-const c = new LeetCodeTree(arr2);
+const c = (new Binary).initFromArray(arr2);
 console.log('c', binaryTreePathsO(c.root), binaryTreePathsT(c.root));
 
-const d = new LeetCodeTree([6,2,3,4,9,8,7,12,1,22])
+// https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/5/19/16acbc19a94dac99~tplv-t2oaga2asx-watermark.awebp
+const d = new Binary()
+;[6,2,3,4,9,8,7,12,1,22].forEach(v=>{
+  d.insert(v);
+})
 console.log(`
 // 如图1中序遍历结果：1 2 3 4 6 7 8 9 12 22
 // 如图1前序遍历结果：6 2 1 3 4 9 8 7 12 22
@@ -89,3 +93,5 @@ console.log(`
 // 如图1前序遍历结果：6 2 1 3 4 9 8 7 12 22
 // 如图1后序遍历结果：1 4 3 2 7 8 22 12 9 6
 console.log('d', d.root, d.middleTraverse(), d.preTraverse(), d.afterTraverse());
+
+console.log('b', d.breadthTraversal()) 
