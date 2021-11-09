@@ -2,7 +2,11 @@
 function binarySearch(start, end, target){
   let mid = start;
   while(start <= end){
-      mid = Math.floor((start + end) / 2);
+      mid = Math.floor((start + end) / 2); 
+      // 用位运算提高效率
+      const mid2 = start + ((end - start)>>1);
+      const mid3 = (end - start)>>1;
+      console.log(mid, mid2, mid3);
       const pow = mid*mid
       if(pow === target){
         return mid;

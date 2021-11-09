@@ -1,12 +1,12 @@
 // import '@/leetcode/excel-pos';
 // import '@/leetcode/binary-balance';
 // import '@/leetcode/binary-path';
-// import '@/leetcode/sqrt';
+import '@/leetcode/sqrt';
 // import '@/leetcode/top-k'
 // import '@/leetcode/task-scheduler'
 // import '@/leetcode/search-range'
 // import '@/leetcode/generate-parentheses'
-import '@/leetcode/merge-two-sorted-lists'
+// import '@/leetcode/merge-two-sorted-lists'
 // import '@/basic/sort'
 // import '@/basic/eat-man'
 // import '@/handwrite/condition-join'
