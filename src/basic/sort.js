@@ -22,8 +22,9 @@ function quickSort (arr) {
   return qsort(arr, 0, arr.length - 1);
 }
 function qsort (arr, low, high) {
-  if (low >= high)
+  if (low >= high) {
     return;
+  }
   const pivot = _partition(arr, low, high);        //将数组分为两部分
   qsort(arr, low, pivot - 1);                   //递归排序左子数组
   qsort(arr, pivot + 1, high);                  //递归排序右子数组
@@ -74,7 +75,7 @@ function chooseSort (arr) {
   for (let i = 0; i < len; i++) {
     let min = i;
     for (let j = i + 1; j < len; j++) {
-      if (arr[i] > arr[j]) {
+      if (arr[i] > arr[j]) { // 找到了最小的
         min = j;
       }
     }
