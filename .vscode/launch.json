@@ -2,19 +2,15 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Current TS File",
-      "type": "node",
+      "name": "Launch TS Node",
       "request": "launch",
-      "program": "${workspaceRoot}/node_modules/.bin/ts-node",
-      "args": [
-        "${relativeFile}"
-      ],
-      "resolveSourceMapLocations": [
-        "${workspaceFolder}/**",
-        "!**/node_modules/**"
-      ],
-      "cwd": "${workspaceRoot}",
-      "protocol": "inspector"
+      "program":"${file}",
+      // "program":"${relativeFile}",
+      "skipFiles": ["<node_internals>/**"],
+      "preLaunchTask": "tsc: build - tsconfig.json",
+      "outFiles": ["${workspaceFolder}/dist/**/*.js"],
+      "type": "pwa-node",
+      "trace": true,
     },
     {
       "name": "Current JS File",

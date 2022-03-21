@@ -7,7 +7,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "mock": "php -S localhost:8088 ./server.php",
-    "hi": "esno ./src/index.ts",
     "dev": "vite"
   },
   "repository": {
@@ -24,10 +23,11 @@
   },
   "homepage": "https://github.com/genffy/algorithms#readme",
   "devDependencies": {
-    "esno": "^0.14.1",
+    "@types/lodash-es": "^4.17.6",
     "typescript": "^4.5.5",
     "vite": "^2.5.2"
   },
   "dependencies": {
+    "lodash-es": "^4.17.21"
   }
 }
