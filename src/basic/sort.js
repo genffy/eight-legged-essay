@@ -1,7 +1,7 @@
 import { timeCount } from "@/utils";
 const toSort = [-2, 1, -3, 4, -1, 2, 1, -5, 4];
 // 插入排序
-function insertSort (arr) {
+function insertSort(arr) {
   const len = arr.length;
   for (let idx = 0; idx < len; idx++) {
     let value = arr[idx];
@@ -18,10 +18,10 @@ timeCount(() => {
   console.log('insert', insertSort(toSort));
 });
 // 快速排序
-function quickSort (arr) {
+function quickSort(arr) {
   return qsort(arr, 0, arr.length - 1);
 }
-function qsort (arr, low, high) {
+function qsort(arr, low, high) {
   if (low >= high) {
     return;
   }
@@ -30,7 +30,7 @@ function qsort (arr, low, high) {
   qsort(arr, pivot + 1, high);                  //递归排序右子数组
   return arr;
 }
-function _partition (arr, low, high) {
+function _partition(arr, low, high) {
   const pivot = arr[low];     //基准
   while (low < high) {
     while (low < high && arr[high] >= pivot) --high;
@@ -47,7 +47,7 @@ timeCount(() => {
   console.log('quick', quickSort(toSort));
 });
 // 冒泡排序
-function bubbleSort (arr) {
+function bubbleSort(arr) {
   const len = arr.length;
   let swap = false;
   for (let i = len - 1; i > 0; i--) { // 每次需要排序的长度
@@ -70,7 +70,7 @@ timeCount(() => {
   console.log('bubble', bubbleSort(toSort));
 });
 // 选择排序
-function chooseSort (arr) {
+function chooseSort(arr) {
   const len = arr.length;
   for (let i = 0; i < len; i++) {
     let min = i;
@@ -98,4 +98,27 @@ function timSort(arr) {
 }
 timeCount(() => {
   console.log('tim', timSort(toSort));
+});
+// count sort
+function countSort(nums) {
+  let min = Number.MAX_VALUE;
+  let max = Number.MIN_VALUE;
+  const len = nums.length;
+  const counts = [];
+  for (let i = len - 1; i > 0; i--) {
+    min = Math.min(min, nums[i]);
+    max = Math.max(max, nums[i]);
+    counts[nums[i] - min]++;
+  }
+  let i = 0;
+  for (let j = min; j <= max; j++) {
+    while (counts[j - min] > 0) {
+      nums[i++] = j;
+      counts[j - min]--;
+    }
+  }
+  return nums;
+}
+timeCount(() => {
+  console.log('count', countSort(toSort));
 });
