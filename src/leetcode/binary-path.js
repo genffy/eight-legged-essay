@@ -13,54 +13,57 @@
 //   this.left = (left===undefined ? null : left)
 //   this.right = (right===undefined ? null : right)
 // }
-import Binary from '@/utils/binary-tree';
-var binaryTreePathsO = function(root) {
-  const paths = [];
-  const construct_paths = (root, path) => {
-      if (root) {
-          console.trace();
-          path += root.val.toString();
-          if (root.left === null && root.right === null) { // 当前节点是叶子节点
-              paths.push(path); // 把路径加入到答案中
-          } else {
-              path += "->"; // 当前节点不是叶子节点，继续递归遍历
-              construct_paths(root.left, path);
-              construct_paths(root.right, path);
-          }
-      }
-  }
-  construct_paths(root, "");
-  return paths;
-};
+import Binary from '../utils/binary-tree';
 
-var binaryTreePathsT = function(root) {
+function binaryTreePathsO(pRoot) {
+  const paths = [];
+  const constructPaths = (root, PPath) => {
+    let path = PPath;
+    if (root) {
+      console.trace();
+      path += root.val.toString();
+      if (root.left === null && root.right === null) {
+        // 当前节点是叶子节点
+        paths.push(path); // 把路径加入到答案中
+      } else {
+        path += '->'; // 当前节点不是叶子节点，继续递归遍历
+        constructPaths(root.left, path);
+        constructPaths(root.right, path);
+      }
+    }
+  };
+  constructPaths(pRoot, '');
+  return paths;
+}
+
+function binaryTreePathsT(root) {
   const paths = [];
   if (root === null) {
-      return paths;
+    return paths;
   }
-  const node_queue = [root];
-  const path_queue = [root.val.toString()];
+  const nodeQueue = [root];
+  const pathQueue = [root.val.toString()];
 
-  while (node_queue.length) {
-      const node = node_queue.shift(); 
-      const path = path_queue.shift();
+  while (nodeQueue.length) {
+    const node = nodeQueue.shift();
+    const path = pathQueue.shift();
 
-      if (node.left === null && node.right === null) {
-          paths.push(path);
-      } else {
-          if (node.left !== null) {
-              node_queue.push(node.left);
-              path_queue.push(path + "->" + node.left.val.toString());
-          }
-
-          if (node.right !== null) {
-              node_queue.push(node.right);
-              path_queue.push(path + "->" + node.right.val.toString());
-          }
+    if (node.left === null && node.right === null) {
+      paths.push(path);
+    } else {
+      if (node.left !== null) {
+        nodeQueue.push(node.left);
+        pathQueue.push(`${path}->${node.left.val.toString()}`);
       }
+
+      if (node.right !== null) {
+        nodeQueue.push(node.right);
+        pathQueue.push(`${path}->${node.right.val.toString()}`);
+      }
+    }
   }
   return paths;
-};
+}
 
 const arr = [1, 2, 3, null, 5];
 //    1
@@ -68,31 +71,31 @@ const arr = [1, 2, 3, null, 5];
 //  2   3
 //   \
 //    5
-const b = (new Binary).initFromArray(arr);
+const b = new Binary().initFromArray(arr);
 console.log('b', binaryTreePathsO(b.root), binaryTreePathsT(b.root));
 
-var arr2 = [3,9,20,null,null,15,7];
+const arr2 = [3, 9, 20, null, null, 15, 7];
 // 3
 // / \
 // 9  20
 //  /  \
 // 15   7
-const c = (new Binary).initFromArray(arr2);
+const c = new Binary().initFromArray(arr2);
 console.log('c', binaryTreePathsO(c.root), binaryTreePathsT(c.root));
 
 // https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/5/19/16acbc19a94dac99~tplv-t2oaga2asx-watermark.awebp
-const d = new Binary()
-;[6,2,3,4,9,8,7,12,1,22].forEach(v=>{
+const d = new Binary();
+[6, 2, 3, 4, 9, 8, 7, 12, 1, 22].forEach((v) => {
   d.insert(v);
-})
+});
 console.log(`
 // 如图1中序遍历结果：1 2 3 4 6 7 8 9 12 22
 // 如图1前序遍历结果：6 2 1 3 4 9 8 7 12 22
 // 如图1后序遍历结果：1 4 3 2 7 8 22 12 9 6
-`)
+`);
 // 如图1中序遍历结果：1 2 3 4 6 7 8 9 12 22
 // 如图1前序遍历结果：6 2 1 3 4 9 8 7 12 22
 // 如图1后序遍历结果：1 4 3 2 7 8 22 12 9 6
 console.log('d', d.root, d.middleTraverse(), d.preTraverse(), d.afterTraverse());
 
-console.log('b', d.breadthTraversal()) 
+console.log('b', d.breadthTraversal());
