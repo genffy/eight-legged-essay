@@ -1,7 +1,5 @@
-import { timeCount } from "@/utils";
-const toSort = [-2, 1, -3, 4, -1, 2, 1, -5, 4];
 // 插入排序
-function insertSort(arr) {
+export function insertSort(arr) {
   const len = arr.length;
   for (let idx = 0; idx < len; idx++) {
     let value = arr[idx];
@@ -14,11 +12,9 @@ function insertSort(arr) {
   }
   return arr;
 }
-timeCount(() => {
-  console.log('insert', insertSort(toSort));
-});
+
 // 快速排序
-function quickSort(arr) {
+export function quickSort(arr) {
   return qsort(arr, 0, arr.length - 1);
 }
 function qsort(arr, low, high) {
@@ -43,11 +39,9 @@ function _partition(arr, low, high) {
   //返回的是基准的位置
   return low;
 }
-timeCount(() => {
-  console.log('quick', quickSort(toSort));
-});
+
 // 冒泡排序
-function bubbleSort(arr) {
+export function bubbleSort(arr) {
   const len = arr.length;
   let swap = false;
   for (let i = len - 1; i > 0; i--) { // 每次需要排序的长度
@@ -66,11 +60,9 @@ function bubbleSort(arr) {
   }
   return arr;
 }
-timeCount(() => {
-  console.log('bubble', bubbleSort(toSort));
-});
+
 // 选择排序
-function chooseSort(arr) {
+export function chooseSort(arr) {
   const len = arr.length;
   for (let i = 0; i < len; i++) {
     let min = i;
@@ -88,19 +80,15 @@ function chooseSort(arr) {
   }
   return arr;
 }
-timeCount(() => {
-  console.log('choose', chooseSort(toSort));
-});
+
 
 // TODO 源自合并排序和插入排序
-function timSort(arr) {
+export function timSort(arr) {
   return arr;
 }
-timeCount(() => {
-  console.log('tim', timSort(toSort));
-});
+
 // count sort
-function countSort(nums) {
+export function countSort(nums) {
   let min = Number.MAX_VALUE;
   let max = Number.MIN_VALUE;
   const len = nums.length;
@@ -119,6 +107,53 @@ function countSort(nums) {
   }
   return nums;
 }
-timeCount(() => {
-  console.log('count', countSort(toSort));
-});
+
+// merge sort
+// iterator
+export function mergeSortArr_1(nums) {
+  const len = nums.length;
+  let src = nums;
+  let target = [];
+  for (let index = 1; index < len; index += index) {
+    for (let start = 0; start < len; start += index * 2) {
+      const mid = Math.min(start + index, len);
+      const end = Math.min(start + index * 2, len);
+      let i = start;
+      let j = mid;
+      let k = start;
+      while (i < mid || j < end) {
+        if (j === end || (i < mid && src[i] < src[j])) {
+          target[k++] = src[i++];
+        } else {
+          target[k++] = src[j++];
+        }
+      }
+    }
+    const temp = src;
+    src = target;
+    target = temp;
+  }
+  return src
+}
+// 递归
+function mergeSort(src = [], dst = [], start = 0, end = 0) {
+  if (start + 1 >= end) return
+  const mid = Math.floor((start + end) / 2);
+  mergeSort(dst, src, start, mid);
+  mergeSort(dst, src, mid, end);
+  let i = start;
+  let j = mid;
+  let k = start;
+  while (i < mid || j < end) {
+    if (j === end || (i < mid && src[i] < src[j])) {
+      dst[k++] = src[i++];
+    } else {
+      dst[k++] = src[j++];
+    }
+  }
+}
+export function mergeSortArr_2(nums) {
+  const dst = [...nums];
+  mergeSort(nums, dst, 0, nums.length);
+  return dst;
+}
