@@ -10,6 +10,7 @@
 // import '@/leetcode/find-number-in-2d-array'
 // import '@/leetcode/min-stack'
 // import '@/leetcode/substring-with-concatenation-of-all-words'
+// import '@/leetcode/median-of-two-sorted-arrays.js'
 // import '@/basic/sort'
 // import '@/basic/eat-man'
 // import '@/handwrite/condition-join'

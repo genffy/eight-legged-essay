@@ -1,3 +1,4 @@
+import { ListNode } from '../utils/linked-list';
 /**
  * Definition for singly-linked list.
  * function ListNode(val, next) {
@@ -9,18 +10,18 @@
  * @param {ListNode} head
  * @return {ListNode}
  */
- var reverseList = function(head) {
-    const stack = []
-    while(head.next){
-        stack.push(new ListNode(head.val))
+export default function reverseList(head) {
+  const stack = [];
+  while (head.next) {
+    stack.push(new ListNode(head.val));
+  }
+  let node = null;
+  while (stack.length) {
+    if (node == null) {
+      node = stack.pop();
+    } else {
+      node.next = stack.pop();
     }
-    let node = null
-    while(stack.length) {
-        if(node == null) {
-            node = stack.pop()
-        } else {
-            node.next = stack.pop()
-        }
-    }
-    return node;
- };
+  }
+  return node;
+}

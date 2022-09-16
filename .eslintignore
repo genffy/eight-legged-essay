@@ -1,0 +1,9 @@
+
+node_modules
+.vscode
+dist
+.husky
+.local
+/bin
+Dockerfile
+*.d.ts

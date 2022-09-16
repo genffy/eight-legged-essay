@@ -23,16 +23,17 @@ function isType(obj) {
   return Object.prototype.toString.call(obj).slice(8, -1).toLocaleLowerCase();
 }
 function flatten(input) {
-  function doit(pStr, cur, target) {
-    if(!['null', 'undefined'].includes(isType(cur))){
-      if(isType(cur) == 'array'){
-        cur.forEach((v, idx)=>{
+  function doit(pStr, cur, pTarget) {
+    const target = pTarget;
+    if (!['null', 'undefined'].includes(isType(cur))) {
+      if (isType(cur) === 'array') {
+        cur.forEach((v, idx) => {
           doit(pStr ? `${pStr}[${idx}]` : `[${idx}]`, v, target);
         });
-      } else if(isType(cur) == 'object') {
-        Object.keys(cur).forEach(v=>{
+      } else if (isType(cur) === 'object') {
+        Object.keys(cur).forEach((v) => {
           doit(pStr ? `${pStr}.${v}` : `${v}`, cur[v], target);
-        })
+        });
       } else {
         target[`${pStr}`] = cur;
       }
@@ -47,21 +48,21 @@ function flatten(input) {
 //   d: {e: 2, f: 3},
 //   g: null
 // }
-var input = [
+const input = [
   1,
   2,
-  undefined, 
+  undefined,
   {
     a: 1,
-    b: [1, 2, {c: true,}, [3]],
-    d: {e: 2, f: 3},
-    g: null
+    b: [1, 2, { c: true }, [3]],
+    d: { e: 2, f: 3 },
+    g: null,
   },
   4,
   null,
-  5
-]
-var output = flatten(input)
+  5,
+];
+const output = flatten(input);
 console.log(output);
 // {
 //   "a": 1,

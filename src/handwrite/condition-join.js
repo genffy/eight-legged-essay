@@ -7,29 +7,29 @@
  */
 function adjoin(arr, func) {
   const newArr = [];
-  let _arr = [];
-  for (let index = 0; index < arr.length; index++) {
+  let iarr = [];
+  for (let index = 0; index < arr.length; index += 1) {
     const cur = arr[index];
     const next = arr[index + 1];
-    if(func(cur)){
-      _arr.push(cur);
+    if (func(cur)) {
+      iarr.push(cur);
       // 且判断是否连续
-      if(!func(next)){
-        newArr.push(_arr);
-        _arr = [];
+      if (!func(next)) {
+        newArr.push(iarr);
+        iarr = [];
       }
     } else {
-      newArr.push(cur)
+      newArr.push(cur);
     }
   }
-  if(_arr.length){
-    newArr.push(_arr);
+  if (iarr.length) {
+    newArr.push(iarr);
   }
   return newArr;
 }
 // [[1, 2], 3, [4, 5]]
-console.log(adjoin([1, 2, 3, 4, 5], item => item !== 3));
+console.log(adjoin([1, 2, 3, 4, 5], (item) => item !== 3));
 // [[1, 2], 3, 4]
-console.log(adjoin([1, 2, 3, 4], item => item < 3));
+console.log(adjoin([1, 2, 3, 4], (item) => item < 3));
 // [[1, 2], 3, 4, 5, [6, 7], 8]
-console.log(adjoin([1, 2, 3, 4, 5, 6, 7, 8], item => item < 3 || (item < 8 && item > 5)));
+console.log(adjoin([1, 2, 3, 4, 5, 6, 7, 8], (item) => item < 3 || (item < 8 && item > 5)));
