@@ -2,12 +2,12 @@
 export function insertSort(pArr) {
   const arr = pArr;
   const len = arr.length;
-  for (let idx = 0; idx < len; idx += 1) {
+  for (let idx = 0; idx < len; idx++) {
     const value = arr[idx];
     let position = idx;
     while (arr[position - 1] > value) {
       arr[position] = arr[position - 1];
-      position -= 1;
+      position--;
     }
     arr[position] = value;
   }
@@ -21,9 +21,9 @@ function partition(pArr, pLow, pHigh) {
   let high = pHigh;
   const pivot = arr[low]; // 基准
   while (low < high) {
-    while (low < high && arr[high] >= pivot) high -= 1;
+    while (low < high && arr[high] >= pivot) --high;
     arr[low] = arr[high]; // 交换比基准大的记录到左端
-    while (low < high && arr[low] <= pivot) low += 1;
+    while (low < high && arr[low] <= pivot) ++low;
     arr[high] = arr[low]; // 交换比基准小的记录到右端
   }
   // 扫描完成，基准到位
@@ -51,10 +51,10 @@ export function bubbleSort(pArr) {
   const arr = pArr;
   const len = arr.length;
   let swap = false;
-  for (let i = len - 1; i > 0; i -= 1) {
+  for (let i = len - 1; i > 0; i--) {
     // 每次需要排序的长度
     swap = false;
-    for (let j = 0; j < i; j += 1) {
+    for (let j = 0; j < i; j++) {
       // 从第一个元素到第i个元素
       if (arr[j] > arr[j + 1]) {
         const temp = arr[j];
@@ -74,9 +74,9 @@ export function bubbleSort(pArr) {
 export function chooseSort(pArr) {
   const arr = pArr;
   const len = arr.length;
-  for (let i = 0; i < len; i += 1) {
+  for (let i = 0; i < len; i++) {
     let min = i;
-    for (let j = i + 1; j < len; j += 1) {
+    for (let j = i + 1; j < len; j++) {
       if (arr[i] > arr[j]) {
         // 找到了最小的
         min = j;
@@ -104,16 +104,16 @@ export function countSort(pNums) {
   let max = Number.MIN_VALUE;
   const len = nums.length;
   const counts = [];
-  for (let i = len - 1; i > 0; i -= 1) {
+  for (let i = len - 1; i > 0; i--) {
     min = Math.min(min, nums[i]);
     max = Math.max(max, nums[i]);
-    counts[nums[i] - min] += 1;
+    counts[nums[i] - min]++;
   }
   let i = 0;
-  for (let j = min; j <= max; j += 1) {
+  for (let j = min; j <= max; j++) {
     while (counts[j - min] > 0) {
-      nums[(i += 1)] = j;
-      counts[j - min] -= 1;
+      nums[i++] = j;
+      counts[j - min]--;
     }
   }
   return nums;
@@ -165,13 +165,9 @@ export function mergeSortArrV1(nums) {
       let k = start;
       while (i < mid || j < end) {
         if (j === end || (i < mid && src[i] < src[j])) {
-          k += 1;
-          i += 1;
-          target[k] = src[i];
+          target[k++] = src[i++];
         } else {
-          k += 1;
-          j += 1;
-          target[k] = src[j];
+          target[k++] = src[j++];
         }
       }
     }
@@ -197,13 +193,9 @@ function mergeSortV1(src = [], pDst = [], start = 0, end = 0) {
   let k = start;
   while (i < mid || j < end) {
     if (j === end || (i < mid && src[i] < src[j])) {
-      k += 1;
-      i += 1;
-      dst[k] = src[i];
+      dst[k++] = src[i++];
     } else {
-      k += 1;
-      j += 1;
-      dst[k] = src[j];
+      dst[k++] = src[j++];
     }
   }
 }

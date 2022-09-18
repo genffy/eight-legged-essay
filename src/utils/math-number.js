@@ -23,8 +23,8 @@ export const stringAddtion = (a = '', b = '', base = 10) => {
     // 计算最终结果
     result = (sum % base) + result;
     // 移位后往更高位靠
-    aIndex -= 1;
-    bIndex -= 1;
+    aIndex--;
+    bIndex--;
   }
   // 如果计算完毕后还有进位，那么前面 + 1
   if (carry) {
@@ -63,8 +63,8 @@ export const stringDifference = (a = '', b = '', base = 10) => {
     // 计算最终结果
     result = (reduce % base) + result;
     // 移位后往更高位靠
-    aIndex -= 1;
-    bIndex -= 1;
+    aIndex--;
+    bIndex--;
   }
 
   // 返回最终结果

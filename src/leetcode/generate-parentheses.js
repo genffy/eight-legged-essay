@@ -19,7 +19,7 @@ function backtrack(ans, cur, open, close, max) {
 function valid(s) {
   const len = s.length;
   const stack = [];
-  for (let i = 0; i < len; i += 1) {
+  for (let i = 0; i < len; i++) {
     const char = s[i];
     const sLen = stack.length;
     if (sLen === 0) {
@@ -97,7 +97,7 @@ export function funcv2(arr) {
         res.push(str);
       }
     } else {
-      for (let i = 0; i < pLen; i += 1) {
+      for (let i = 0; i < pLen; i++) {
         if (!vUsed[i]) {
           path.push(collect[i]);
           vUsed[i] = true;

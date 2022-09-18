@@ -24,7 +24,7 @@ export default class LinkedList {
     let pos = 0;
     while (currentNode !== null && pos !== index) {
       currentNode = currentNode.next;
-      pos += 1;
+      pos++;
     }
     console.log(currentNode);
     return currentNode === null ? -1 : currentNode;

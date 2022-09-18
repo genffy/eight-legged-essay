@@ -26,7 +26,7 @@ export default function leastInterval(ptasks, n) {
     const arr = [];
     const len = tasks.length;
     const nArr = [];
-    for (let index = 0; index < len; index += 1) {
+    for (let index = 0; index < len; index++) {
       const element = tasks[index];
       if (!arrV.includes(element)) {
         arrV.push(element);
@@ -41,7 +41,7 @@ export default function leastInterval(ptasks, n) {
     tasks = nArr;
   }
   console.log(arrV, count);
-  count += 1;
+  count++;
   return count;
 }
 let tasks = [];

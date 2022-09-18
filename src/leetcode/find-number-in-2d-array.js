@@ -33,15 +33,15 @@ function findNumberIn2DArray(matrix, target) {
     }
     if (max < target) {
       // 分割成了两个小矩形
-      for (let i = colIndex; i <= colLen; i += 1) {
-        for (let j = 0; j <= rowIndex; j += 1) {
+      for (let i = colIndex; i <= colLen; i++) {
+        for (let j = 0; j <= rowIndex; j++) {
           if (matrix[j][i] === target) {
             return true;
           }
         }
       }
-      for (let i = 0; i <= colIndex; i += 1) {
-        for (let j = rowIndex; j <= rowLen; j += 1) {
+      for (let i = 0; i <= colIndex; i++) {
+        for (let j = rowIndex; j <= rowLen; j++) {
           if (matrix[j][i] === target) {
             return true;
           }
@@ -53,12 +53,12 @@ function findNumberIn2DArray(matrix, target) {
       return false;
     }
     if (rowIndex > 0) {
-      rowIndex -= 1;
+      rowIndex--;
     } else {
       rowIndex = 0;
     }
     if (colIndex > 0) {
-      colIndex -= 1;
+      colIndex--;
     } else {
       colIndex = 0;
     }
@@ -74,8 +74,8 @@ console.log(
       [6, 10, 13, 18],
       [10, 13, 18, 19],
     ],
-    14,
-  ),
+    14
+  )
 );
 console.log(
   findNumberIn2DArray(
@@ -88,6 +88,6 @@ console.log(
       [21, 25, 28, 30, 35, 35],
       [24, 25, 33, 36, 37, 40],
     ],
-    21,
-  ),
+    21
+  )
 );
