@@ -102,4 +102,6 @@ EatMan('Hank');
 EatMan('Hank').eat('dinner').eat('supper');
 EatMan('Hank').eat('dinner').eatFirst('lunch');
 EatMan('Hank').eat('dinner').eatFirst('lunch').eatFirst('breakfast');
-EatMan('Hank').eat('dinner').eatFirst('lunch').eat('supper').eatFirst('breakfast');
+// prettier-ignore
+EatMan('Hank').eat('dinner').eatFirst('lunch').eat('supper')
+  .eatFirst('breakfast');

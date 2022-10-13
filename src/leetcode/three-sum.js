@@ -10,7 +10,7 @@ export function threeSum(pnums) {
   const arr = [];
   const len = nums.length;
   const obj = {};
-  for (let i = 0; i < len; i += 1) {
+  for (let i = 0; i < len; i++) {
     let j = i + 1;
     let k = len - 1;
     while (nums[i] <= 0 && j < k) {
@@ -20,19 +20,19 @@ export function threeSum(pnums) {
       const key = arrTemp.join('');
       let rest = arrTemp.reduce((a, b) => a + b);
       if (kV < 0 || obj[key]) {
-        j += 1;
-        k -= 1;
+        j++;
+        k--;
       } else {
         rest = arrTemp.reduce((a, b) => a + b);
         if (rest === 0) {
           arr.push(arrTemp);
           obj[key] = true;
-          j += 1;
-          k -= 1;
+          j++;
+          k--;
         } else if (rest > 0) {
-          k -= 1;
+          k--;
         } else {
-          j += 1;
+          j++;
         }
       }
     }
@@ -67,7 +67,7 @@ export function threeSum2(nums) {
   }
   const n = arr.length;
   const res = [];
-  for (let i = 0; i < n; i += 1) {
+  for (let i = 0; i < n; i++) {
     // 如果当前值大于 0，和右侧的值再怎么加也不会等于 0，所以直接退出
     if (nums[i] > 0) {
       return res;
@@ -83,23 +83,23 @@ export function threeSum2(nums) {
     while (l < r) {
       const temp = arr[i] + arr[l] + arr[r];
       if (temp > 0) {
-        r -= 1;
+        r--;
       }
       if (temp < 0) {
-        l += 1;
+        l++;
       }
       if (temp === 0) {
         res.push([nums[i], nums[l], nums[r]]);
         // 跳过重复值
         while (l < r && nums[l] === nums[l + 1]) {
-          l += 1;
+          l++;
         }
         // 同上
         while (l < r && nums[r] === nums[r - 1]) {
-          r -= 1;
+          r--;
         }
-        l += 1;
-        r -= 1;
+        l++;
+        r--;
       }
     }
   }

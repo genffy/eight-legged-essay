@@ -16,7 +16,7 @@ export class TenTo2 {
    * @param {number} number
    * @return 二进制字符串
    */
-  static integerGEQZero(pnumber) {
+  integerGEQZero = (pnumber) => {
     let number = pnumber;
     let result = '';
     while (number >= 1) {
@@ -24,7 +24,7 @@ export class TenTo2 {
       number = Math.floor(number / 2);
     }
     return result;
-  }
+  };
 
   /**
    * @name integerLSSZero
@@ -32,7 +32,7 @@ export class TenTo2 {
    * @param {number} number
    * @return 二进制字符串
    */
-  static integerLSSZero(pnumber) {
+  integerLSSZero = (pnumber) => {
     let result = '';
     let number = pnumber;
     // 转正
@@ -53,7 +53,7 @@ export class TenTo2 {
     // 加一
     result = stringAddtion(result, '1', 2);
     return result;
-  }
+  };
 
   /**
    * @name floorGTROne
@@ -75,9 +75,10 @@ export class TenTo2 {
    * @param {number} number
    * @return 二进制字符串
    */
-  static floorBetweenZeroOne(pnumber) {
+  floorBetweenZeroOne = (pnumber) => {
     let result = '';
     let number = pnumber;
+    // prettier-ignore
     while (
       number !== 0
       && number !== 1 // 取值到 0 或者 1 为止
@@ -92,10 +93,11 @@ export class TenTo2 {
     }
     result = `0.${result}`;
     return result;
-  }
+  };
 
   // 负小数
-  static floorGTROneLSSZero() {}
+  // @TODO
+  floorGTROneLSSZero = (number) => number.toString(2);
 
   /**
    * @name decimalToBinary
@@ -142,17 +144,17 @@ export class TwoTo10 {
    * @param {string} binary
    * @return 整数
    */
-  static integerGEQZero(binary) {
+  integerGEQZero = (binary) => {
     let result = 0;
 
     const index = binary.indexOf('1');
     const newBinary = binary.slice(index).split('').reverse('').join(''); // 截取 1 后面的，然后从最后往前取
-    for (let i = 0; i < newBinary.length; i += 1) {
+    for (let i = 0; i < newBinary.length; i++) {
       result += newBinary[i] * 2 ** i;
     }
 
     return result;
-  }
+  };
 
   /**
    * @name integerLSSZero
@@ -167,14 +169,14 @@ export class TwoTo10 {
     // 减一
     binary = stringDifference(binary, '1', 2);
     let reverseBinary = ''; // 取反
-    for (let i = 0; i < binary.length; i += 1) {
+    for (let i = 0; i < binary.length; i++) {
       if (binary[i] === '0') {
         reverseBinary += '1';
       } else {
         reverseBinary += '0';
       }
     }
-    result = -(this.integerGEQZero(reverseBinary));
+    result = -this.integerGEQZero(reverseBinary);
 
     return result;
   }
@@ -197,21 +199,21 @@ export class TwoTo10 {
   /**
    * @name floorBetweenZeroOne
    * @description 大于 0 小于 1 的二进制转小数
-   * @param {string} pbinary
+   * @param {string} binary
    * @return 小数
    */
-  static floorBetweenZeroOne(pbinary) {
+  floorBetweenZeroOne = (pbinary) => {
     let result = 0;
     let binary = pbinary;
 
     binary = binary.replace('.', ''); // 去掉小数点
 
-    for (let i = 0; i < binary.length; i += 1) {
+    for (let i = 0; i < binary.length; i++) {
       result += Number(binary[i]) * 2 ** -i;
     }
 
     return result;
-  }
+  };
 
   /**
    * @name binaryToDecimal

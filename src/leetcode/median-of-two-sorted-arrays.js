@@ -23,16 +23,16 @@ export default function findMedianSortedArrays(nums1, nums2) {
     const v2 = nums2[idx2];
     if (v1 === undefined && v2 !== undefined) {
       merge.push(v2);
-      idx2 += 1;
+      idx2++;
     } else if (v1 !== undefined && v2 === undefined) {
       merge.push(v1);
-      idx1 += 1;
+      idx1++;
     } else if (v1 <= v2) {
       merge.push(v1);
-      idx1 += 1;
+      idx1++;
     } else {
       merge.push(v2);
-      idx2 += 1;
+      idx2++;
     }
     if (merge.length === midLen + 1) {
       if (mergeLen % 2 === 0) {

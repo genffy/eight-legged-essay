@@ -19,7 +19,7 @@ export default class Binary {
     const nodeList = [this.root];
     let index = 0;
     while (index < len) {
-      index += 1;
+      index++;
       if (index >= len) {
         return this;
       }
@@ -29,7 +29,7 @@ export default class Binary {
         currNode.left = leftChild;
         nodeList.push(leftChild);
       }
-      index += 1;
+      index++;
       if (index >= len) {
         return this;
       }

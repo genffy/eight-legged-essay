@@ -37,7 +37,7 @@ export default function findSubstring(s, words) {
 
   // 以 tLen 和 len 为 大小步长暴力判断
   const arr = [];
-  for (let i = 0, end = sLen - tLen + 1; i < end; i += 1) {
+  for (let i = 0, end = sLen - tLen + 1; i < end; i++) {
     const subStr = s.substr(i, tLen);
     if (inWords(subStr)) {
       arr.push(i);

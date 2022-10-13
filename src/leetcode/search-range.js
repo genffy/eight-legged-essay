@@ -47,7 +47,7 @@ export function searchRange(nums, target) {
     return -1;
   }
   function findLastIndex(n) {
-    for (let k = n; k >= 0; k -= 1) {
+    for (let k = n; k >= 0; k--) {
       if (nums[k] === target) {
         return k;
       }

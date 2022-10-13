@@ -84,12 +84,12 @@ export default class Promise {
     // Promise/A+ 2.2.1 / Promise/A+ 2.2.5 / Promise/A+ 2.2.7.3 / Promise/A+ 2.2.7.4
     const onFulfilled = typeof pOnFulfilled === 'function' ? pOnFulfilled : (v) => v;
     // 因为错误的值要让后面访问到，所以这里也要跑出个错误，不然会在之后 then 的 resolve 中捕获
-    const onRejected =
-      typeof pOnRejected === 'function'
-        ? pOnRejected
-        : (err) => {
-            throw err;
-          };
+    // prettier-ignore
+    const onRejected = typeof pOnRejected === 'function'
+      ? pOnRejected
+      : (err) => {
+        throw err;
+      };
     // 每次调用 then 都返回一个新的 promise  Promise/A+ 2.2.7
     const promise2 = new Promise((resolve, reject) => {
       if (this.status === FULFILLED) {

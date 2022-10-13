@@ -8,7 +8,7 @@
 function adjoin(arr, func) {
   const newArr = [];
   let iarr = [];
-  for (let index = 0; index < arr.length; index += 1) {
+  for (let index = 0; index < arr.length; index++) {
     const cur = arr[index];
     const next = arr[index + 1];
     if (func(cur)) {
