@@ -4,12 +4,15 @@
     {
       "name": "Launch TS Node",
       "request": "launch",
-      "program":"${file}",
-      // "program":"${relativeFile}",
-      "skipFiles": ["<node_internals>/**"],
+      "program": "${file}",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
       "preLaunchTask": "tsc: build - tsconfig.json",
-      "outFiles": ["${workspaceFolder}/dist/**/*.js"],
-      "type": "pwa-node",
+      "outFiles": [
+        "${workspaceFolder}/dist/**/*.js"
+      ],
+      "type": "node",
       "trace": true,
     },
     {
@@ -24,7 +27,6 @@
         "!**/node_modules/**"
       ],
       "cwd": "${workspaceRoot}",
-      "protocol": "inspector"
     }
   ]
 }

@@ -1,5 +1,5 @@
 {
-  "name": "algorithms",
+  "name": "eight-legged-essay",
   "version": "1.0.0",
   "description": "practice",
   "main": "index.ts",
@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/genffy/algorithms.git"
+    "url": "git+https://github.com/genffy/eight-legged-essay.git"
   },
   "keywords": [
     "leetcode"
@@ -21,9 +21,9 @@
   "author": "genffy",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/genffy/algorithms/issues"
+    "url": "https://github.com/genffy/eight-legged-essay/issues"
   },
-  "homepage": "https://github.com/genffy/algorithms#readme",
+  "homepage": "https://github.com/genffy/eight-legged-essay#readme",
   "devDependencies": {
     "@babel/core": "^7.19.1",
     "@babel/preset-env": "^7.19.1",
