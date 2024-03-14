@@ -57,7 +57,7 @@ function machineWithPromise(name) {
     },
   };
 }
-
+// ? 好像这就是一个手写 Promise 的变种？
 function machineWithoutPromise(name) {
   const arr = [];
   arr.push(() => {
