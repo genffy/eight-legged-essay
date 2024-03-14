@@ -80,7 +80,7 @@ export default class Promise {
   }
 
   then(pOnFulfilled, pOnRejected) {
-    // 解决 onFufilled，onRejected 没有传值的问题
+    // 解决 onFulfilled，onRejected 没有传值的问题
     // Promise/A+ 2.2.1 / Promise/A+ 2.2.5 / Promise/A+ 2.2.7.3 / Promise/A+ 2.2.7.4
     const onFulfilled = typeof pOnFulfilled === 'function' ? pOnFulfilled : (v) => v;
     // 因为错误的值要让后面访问到，所以这里也要跑出个错误，不然会在之后 then 的 resolve 中捕获

@@ -1,5 +1,5 @@
 /* eslint-disable max-classes-per-file */
-import { stringAddtion, stringDifference } from '../utils/math-number';
+import { stringAddition, stringDifference } from '../utils/math-number';
 // 参考文章，讲的非常详细 https://www.cnblogs.com/web-record/p/11132861.html
 /*
  * EQU - 等于：equal
@@ -51,7 +51,7 @@ export class TenTo2 {
       result = '1'.repeat(8 - result.length) + result;
     }
     // 加一
-    result = stringAddtion(result, '1', 2);
+    result = stringAddition(result, '1', 2);
     return result;
   };
 

@@ -1,12 +1,12 @@
 /**
- * @name stringAddtion
+ * @name stringAddition
  * @description 字符串求和
  * @param {string} a 加数一
  * @param {string} b 加数二
  * @param {any} base 基数（默认十进制）
  * @return 返回计算结果
  */
-export const stringAddtion = (a = '', b = '', base = 10) => {
+export const stringAddition = (a = '', b = '', base = 10) => {
   // 结果
   let result = '';
   // 进位标记
