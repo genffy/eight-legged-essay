@@ -3,13 +3,16 @@
   "version": "1.0.0",
   "description": "practice",
   "main": "index.ts",
-  "packageManager": "pnpm@6.21.0",
+  "packageManager": "pnpm@8.8.0",
   "scripts": {
     "test": "jest",
     "mock": "php -S localhost:8088 ./server.php",
     "dev": "vite",
     "eslint": "eslint --cache --max-warnings 0  \"src/**/*.{js,ts,tsx,jsx}\" --fix",
-    "prettier": "prettier --write  \"src/**/*.{js,json,tsx,css,less,scss,vue,html,md}\""
+    "prettier": "prettier --write  \"src/**/*.{js,json,tsx,css,less,scss,vue,html,md}\"",
+    "build": "tsc && vite build",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview"
   },
   "repository": {
     "type": "git",
@@ -25,20 +28,35 @@
   },
   "homepage": "https://github.com/genffy/eight-legged-essay#readme",
   "devDependencies": {
-    "@babel/core": "^7.19.1",
-    "@babel/preset-env": "^7.19.1",
-    "@types/lodash-es": "^4.17.6",
-    "babel-jest": "^29.0.3",
-    "eslint": "^7.32.0 || ^8.2.0",
+    "@babel/core": "^7.24.0",
+    "@babel/preset-env": "^7.24.0",
+    "@types/lodash-es": "^4.17.12",
+    "@types/react": "^18.2.56",
+    "@types/react-dom": "^18.2.19",
+    "@types/sql.js": "^1.4.9",
+    "@typescript-eslint/eslint-plugin": "^7.0.2",
+    "@typescript-eslint/parser": "^7.0.2",
+    "@vitejs/plugin-react": "^4.2.1",
+    "babel-jest": "^29.7.0",
+    "eslint": "^8.56.0",
     "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-plugin-import": "^2.25.2",
-    "jest": "^29.0.3",
-    "prettier": "^2.7.1",
-    "typescript": "^4.5.5",
-    "vite": "^2.9.16"
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.5",
+    "jest": "^29.7.0",
+    "prettier": "^2.8.8",
+    "typescript": "^5.4.2",
+    "vite": "^5.1.6"
   },
   "dependencies": {
-    "lodash-es": "^4.17.21"
+    "@blocksuite/blocks": "0.13.0-canary-202403090437-b9b4c13",
+    "@blocksuite/presets": "0.13.0-canary-202403090437-b9b4c13",
+    "@blocksuite/store": "0.13.0-canary-202403090437-b9b4c13",
+    "lodash-es": "^4.17.21",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.22.3",
+    "sql.js": "^1.10.2"
   },
   "lint-staged": {
     "**/*": "prettier --write --ignore-unknown"
